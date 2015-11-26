@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+  	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+  	<body ng-app="marvelApp">
+    	<ion-nav-bar class="bar-stable">
+      		<ion-nav-back-button>
+      		</ion-nav-back-button>
+    	</ion-nav-bar>
+    	<ion-nav-view></ion-nav-view>
+
+		<div  id = "global" ng-app="marvelApp" > 
+			<section data-ng-controller="HeroesController as vm">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="titulo-panel">Comics Marvel</h2>
+					</div>
+  					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-2">
+							</div>
+							<div class="col-sm-8" >
+								<div class="col-md-12 div-busqueda">
+									<div class="col-md-2">
+										<label style = "font-size: 22px" for= "inputcomics">Comics:</label>
+									</div>
+									<div class="col-md-6">
+										<input id ="inputcomics" class = "form-control input" ng-model="filter1"/>
+									</div>
+								</div>
+   								<div  data-ng-repeat="hero in vm.heroes | filter : filter1 ">
+  									<div class="col-sm-4">
+    									<div class="thumbnail" align="center">
+     										<div class="div-image">
+      											<img class="hero-image" data-ng-src="{{hero.image}}">
+      										</div>
+      										<div class="caption div-nombre">
+        										<h4>{{hero.name}}</h4>
+      										</div>
+    									</div>
+  									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+							</div>
+						</div>
+  					</div>
+				</div>
+			</section>  
+		</div>
+  </body>
+</html>
